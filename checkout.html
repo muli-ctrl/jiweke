@@ -1,446 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Jiweke Tavern Menu</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;700&display=swap" rel="stylesheet">
-  
-  <!-- Font Awesome -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
-  <!-- Link to external stylesheet -->
-  <link rel="stylesheet" href="style.css">
-  <style>
-     
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-    }
-
-    body {
-      background: #ffbf00;
-      color: #222;
-    }
-
-
-    .banner {
-      width: 100%;
-      height: 280px;
-      background-image: url('LIVE LIFE.png'); /* Replace with your image path */
-      background-size: cover;
-      background-position: center;
-      animation: popUpScale 6s ease-in-out infinite;
-    }
-
-    @keyframes popUpScale {
-      0%, 100% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.05);
-      }
-    }
-
-    /* NAVIGATION STYLING */
-    .nav-bar {
-      display: flex;
-      overflow-x: auto;
-      background: #f7efef;
-      padding: 14px 10px;
-      border-top: 3px solid #000;
-      border-bottom: 3px solid #000000;
-      box-shadow: 0 4px 12px #000000;
-      gap: 12px;
-      scroll-snap-type: x mandatory;
-      transition: top 0.4s ease;
-    }
-
-    .nav-bar::-webkit-scrollbar {
-      height: 6px;
-    }
-
-    .nav-bar::-webkit-scrollbar-thumb {
-      background: #ccc;
-      border-radius: 10px;
-    }
-
-    .nav-btn {
-      flex: 0 0 auto;
-      scroll-snap-align: start;
-      text-decoration: none;
-      font-weight: bold;
-      padding: 10px 18px;
-      border-radius: 20px;
-      border: 2px solid #ddd;
-      background: linear-gradient(145deg, #e2e2e2, #ffffff);
-      color: #000000;
-      transition: all 0.3s ease;
-      box-shadow: 2px 2px 2px #000000;
-      position: relative;
-    }
-
-    .nav-btn:hover {
-      background: #f0cd06;
-      color: #000000;
-      border-color: #bbb;
-      transform: translateY(-2px);
-    }
-
-    /* ACTIVE NAV LINK INDICATOR */
-    .nav-btn.active {
-      background: #f0c60d;
-      color: #000000;
-      border-color: #222;
-      font-weight: 900;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
-    }
-
-    /* OFFER BUTTON SPECIAL EFFECT */
-    .offer-btn {
-      background: linear-gradient(45deg, #ff0000, #b30000);
-      color: #fff !important;
-      font-weight: 900;
-      border: 2px solid #fff;
-      padding: 12px 24px;
-      border-radius: 30px;
-      text-transform: uppercase;
-      font-size: 1.2rem;
-      animation: glowPulse 1.5s infinite;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    @keyframes glowPulse {
-      0% { box-shadow: 0 0 8px #ff0000; }
-      50% { box-shadow: 0 0 20px #ff0000; }
-      100% { box-shadow: 0 0 8px #ff0000; }
-    }
-
-    /* RESPONSIVENESS */
-    @media (max-width: 600px) {
-      .nav-bar {
-        padding: 12px 6px;
-      }
-
-      .nav-btn {
-        padding: 8px 14px;
-        font-size: 0.85rem;
-      }
-
-      .offer-btn {
-        padding: 10px 18px;
-        font-size: 0.9rem;
-      }
-    }
-  
-
-  </style>
-
-</head>
-<body>
-  <div class="banner"></div>
-
-
-  <!-- Navigation Menu -->
-  <nav class="nav-bar" id="navbar">
-    <a href="index.html" class="nav-btn offer-btn"> <i class="fas fa-tags"></i> OFFER🔥 </a>
-    <a href="MUTTONCHIKEN.html" class="nav-btn">MUTTON/CHICKEN</a>
-    <a href="Fish.html" class="nav-btn">FISH</a>
-    <a href="PLATTERS.html" class="nav-btn">PLATTERS</a>
-    <a href="SIDE ORDERS.html" class="nav-btn">SIDE ORDERS</a>
-    <a href="SNACKS.html" class="nav-btn">SNACKS</a>
-    <a href="KIDS.html" class="nav-btn">KIDS</a>
-    <a href="PIZZA.html" class="nav-btn">PIZZA (NEW)</a>
-    <a href="HOT BEVERAGES.html" class="nav-btn">HOT BEVERAGES</a>
-    <a href="CHEF'S SPECIAL.html" class="nav-btn">CHEF'S SPECIAL</a>
-  </nav>
-
-  <script>
-    // Highlight active page
-    const currentURL = window.location.href.toLowerCase();
-    document.querySelectorAll('.nav-btn').forEach(link => {
-      const href = link.getAttribute('href').toLowerCase();
-      if (currentURL.includes(href)) {
-        link.classList.add('active');
-      }
-    });
-  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout - Jiweke</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 <style>
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #f5f5f5;
-  margin: 0;
-  color: #333;
-}
+body { font-family:'Segoe UI',sans-serif; background:#f5f5f5; margin:0; padding:20px; color:#333; }
+h1 { text-align:center; color:#c8102e; margin-bottom:20px; font-size:2rem; }
 
-h1 { text-align: center; color: #c8102e; margin: 20px 0; }
-
-/* Sections */
-.section {
-  max-width: 700px;
-  margin: 20px auto;
-  background: #fff;
-  padding: 30px 25px;
-  border-radius: 15px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-}
-
-.section h2 { text-align: center; margin-bottom: 20px; color: #222; font-size: 1.5rem; }
-
-/* Tabs */
-.tabs {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-  gap: 10px;
-}
-
-.tab-btn {
-  padding: 12px 30px;
-  border: none;
-  border-radius: 10px;
-  background: #fff;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-}
-
-.tab-btn.active {
-  background: #c8102e;
-  color: #fff;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-}
-
-.tab-btn:hover { transform: translateY(-2px); }
+/* Flip Section */
+.flip-section { max-width:600px; margin:0 auto 30px; }
+.flip-card { perspective:1000px; width:100%; }
+.flip-card-inner { position:relative; transition: transform 0.8s; transform-style: preserve-3d; width:100%; }
+.flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+.flip-card-front, .flip-card-back { backface-visibility:hidden; background:#fff; border-radius:12px; padding:25px; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
+.flip-card-back { transform:rotateY(180deg); }
 
 /* Forms */
-.checkout-form { display: none; flex-direction: column; gap: 15px; }
-.checkout-form.active { display: flex; }
-input, select, textarea {
-  padding: 12px 15px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  font-size: 1rem;
-  outline: none;
-}
-input:focus, select:focus, textarea:focus {
-  border-color: #c8102e;
-  box-shadow: 0 0 5px rgba(200,16,46,0.3);
-}
+form { display:flex; flex-direction:column; gap:12px; }
+input, select, textarea { padding:10px; border-radius:6px; border:1px solid #ccc; font-size:1rem; }
+input:focus, select:focus, textarea:focus { border-color:#c8102e; outline:none; }
 
-/* Payment Buttons */
-.payment-btn {
-  padding: 14px;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 10px;
-  cursor: pointer;
-  border: none;
-  width: 100%;
-  margin-top: 10px;
-  transition: all 0.3s;
-}
-
-.payment-btn.mpesa {
-  background: linear-gradient(45deg,#1ba94c,#0f8a36);
-  color: #fff;
-}
-
-.payment-btn.mpesa:hover { transform: translateY(-2px); }
-
-.payment-btn.cod {
-  background: #222;
-  color: #fff;
-}
-
-.payment-btn.cod:hover { background: #444; transform: translateY(-2px); }
+/* Payment Methods */
+.payment-methods { display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-bottom:20px; }
+.payment-method { padding:10px 20px; border-radius:10px; cursor:pointer; border:1px solid #ccc; display:flex; align-items:center; gap:8px; transition:all 0.3s; }
+.payment-method.selected { background:#c8102e; color:#fff; border-color:#c8102e; }
 
 /* Cart Summary */
-.cart-summary { margin-top: 20px; padding: 20px; border-radius: 12px; background: #fafafa; }
-.cart-summary h3 { margin-bottom: 15px; font-size: 1.2rem; border-bottom: 1px solid #eee; padding-bottom: 5px; }
-.cart-item { display: flex; justify-content: space-between; margin-bottom: 10px; }
-.cart-item:last-child { margin-bottom: 0; }
-.total { font-weight: bold; text-align: right; margin-top: 15px; color: #c8102e; font-size: 1.2rem; }
+.cart-summary { max-width:650px; margin:0 auto 25px; background:#fff; padding:20px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.05); }
+.cart-summary h2 { margin-bottom:15px; font-size:1.5rem; }
+.cart-item { display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #eee; }
+.cart-item:last-child { border-bottom:none; }
+.total { font-weight:bold; text-align:right; margin-top:15px; }
 
-/* Place Order Button */
-.order-btn {
-  background: #c8102e;
-  color: #fff;
-  padding: 16px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 12px;
-  width: 100%;
-  cursor: pointer;
-  margin-top: 15px;
-  transition: all 0.3s;
-}
+/* Footer Grid */
+.footer-grid { display:flex; justify-content:space-between; max-width:650px; margin:0 auto 20px; gap:10px; }
+.footer-grid button { padding:12px 30px; border:none; border-radius:8px; cursor:pointer; font-size:1rem; background:#000; color:#fff; transition:all 0.3s; }
+.footer-grid button:hover { background:#c8102e; }
 
-.order-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
+/* Order Button */
+.order-btn { display:block; width:100%; max-width:650px; margin:0 auto; padding:15px; font-size:1.2rem; font-weight:600; border:none; border-radius:10px; background:#1ba94c; color:#fff; cursor:pointer; transition:all 0.3s; }
+.order-btn:hover { background:#148a3b; }
 
-@media(max-width:600px){
-  .tabs { flex-direction: column; gap: 10px; }
-  .section { padding: 20px 15px; }
-  .payment-btn, .order-btn { font-size: 1rem; padding: 14px; }
-}
+@media(max-width:600px){ .footer-grid{ flex-direction:column; } }
 </style>
 </head>
 <body>
-
 <h1>Checkout</h1>
 
-<!-- Section 1: Select Delivery / Dine -->
-<div class="section">
-  <h2>Select Your Option</h2>
-  <div class="tabs">
-    <button class="tab-btn active" data-target="homeForm">🏠 Home Delivery</button>
-    <button class="tab-btn" data-target="dineForm">🍽️ Dine at Jiweke</button>
+<!-- 1️⃣ Delivery Section -->
+<div class="flip-section">
+  <div class="flip-card" id="flipCard">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <h2>🏠 Home Delivery</h2>
+        <form id="homeForm">
+          <input type="text" name="name" placeholder="Full Name" required>
+          <input type="email" name="email" placeholder="Email" required>
+          <input type="tel" name="phone" placeholder="Phone Number" required>
+          <textarea name="address" placeholder="Home Address" rows="3" required></textarea>
+        </form>
+        <div style="text-align:center; margin-top:10px; cursor:pointer; color:#c8102e;" onclick="flipCard()">Switch to Dine at Jiweke 🍽️</div>
+      </div>
+      <div class="flip-card-back">
+        <h2>🍽️ Dine at Jiweke</h2>
+        <form id="dineForm">
+          <input type="text" name="name" placeholder="Full Name" required>
+          <input type="email" name="email" placeholder="Email" required>
+          <input type="tel" name="phone" placeholder="Phone Number" required>
+          <select name="zone" required>
+            <option value="">Select Dining Zone</option>
+            <option value="indoor">Indoor</option>
+            <option value="outdoor">Outdoor</option>
+            <option value="vip">VIP Zone</option>
+          </select>
+        </form>
+        <div style="text-align:center; margin-top:10px; cursor:pointer; color:#c8102e;" onclick="flipCard()">Switch to Home Delivery 🏠</div>
+      </div>
+    </div>
   </div>
-
-  <!-- Forms -->
-  <form id="homeForm" class="checkout-form active">
-    <input type="text" name="name" placeholder="Full Name" required>
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="tel" name="phone" placeholder="Phone Number" required>
-    <textarea name="address" placeholder="Home Address" rows="3" required></textarea>
-  </form>
-
-  <form id="dineForm" class="checkout-form">
-    <input type="text" name="name" placeholder="Full Name" required>
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="tel" name="phone" placeholder="Phone Number" required>
-    <select name="zone" required>
-      <option value="">Select Dining Zone</option>
-      <option value="indoor">Indoor</option>
-      <option value="outdoor">Outdoor</option>
-      <option value="vip">VIP Zone</option>
-    </select>
-  </form>
 </div>
 
-<!-- Section 2: Payment Method -->
-<div class="section">
-  <h2>Choose Payment Method</h2>
-  <button class="payment-btn mpesa" id="payMpesa">M-Pesa</button>
-  <button class="payment-btn cod" id="payCod">Cash on Delivery</button>
+<!-- 2️⃣ Payment Section -->
+<div class="payment-methods">
+  <div class="payment-method" id="mpesaBtn"><i class="fa-solid fa-mobile-screen-button"></i> M-Pesa</div>
+  <div class="payment-method" id="paypalBtn"><i class="fa-brands fa-paypal"></i> PayPal</div>
+  <div class="payment-method" id="codBtn"><i class="fa-solid fa-money-bill"></i> Cash on Delivery</div>
 </div>
 
-<!-- Section 3: Cart Summary -->
-<div class="section cart-summary">
-  <h3>Order Summary</h3>
+<!-- 3️⃣ Cart Summary -->
+<div class="cart-summary" id="cartSummary">
+  <h2>Order Summary</h2>
   <div id="cartItems"></div>
   <div class="total" id="grandTotal">Total: KES 0.00</div>
+  <div class="total" id="totalQty">Total Quantity: 0</div>
 </div>
 
-<!-- Section 4: Place Order -->
-<div class="section">
-  <button class="order-btn" id="placeOrder">Place Order</button>
+<!-- 4️⃣ Footer Grid -->
+<div class="footer-grid">
+  <button onclick="window.location.href='cart.html'">Back to Cart</button>
+  <button onclick="window.location.href='index.html'">Back to Shopping</button>
 </div>
+
+<!-- 5️⃣ Place Order Button -->
+<button class="order-btn" id="placeOrderBtn">Place Order</button>
 
 <script>
-// Tabs
-const tabs = document.querySelectorAll('.tab-btn');
-const forms = document.querySelectorAll('.checkout-form');
-let currentSelection = 'home';
-let selectedPayment = null;
+let flipCardEl = document.getElementById('flipCard');
+function flipCard(){ flipCardEl.classList.toggle('flipped'); }
 
-tabs.forEach(tab=>{
-  tab.addEventListener('click', ()=>{
-    tabs.forEach(t=>t.classList.remove('active'));
-    tab.classList.add('active');
-    const target = tab.dataset.target;
-    forms.forEach(f=>f.classList.remove('active'));
-    document.getElementById(target).classList.add('active');
-    currentSelection = target==='homeForm'?'home':'dine';
-  });
-});
-
-// Cart
-let cart = JSON.parse(localStorage.getItem('cart')||'[]');
+// Cart Data
+let cart = JSON.parse(localStorage.getItem('cart') || '[]');
 const cartItems = document.getElementById('cartItems');
 const grandTotal = document.getElementById('grandTotal');
-
+const totalQty = document.getElementById('totalQty');
 function renderCart(){
-  cartItems.innerHTML=''; let total=0;
-  if(cart.length===0){ cartItems.innerHTML='<p>Your cart is empty.</p>'; grandTotal.textContent='Total: KES 0.00'; return; }
+  cartItems.innerHTML=''; let total=0; let qtyTotal=0;
+  if(cart.length===0){ cartItems.innerHTML='<p>Your cart is empty.</p>'; grandTotal.textContent='Total: KES 0.00'; totalQty.textContent='Total Quantity: 0'; return;}
   cart.forEach(item=>{
     const qty=item.quantity||1;
     const subtotal=item.price*qty;
     total+=subtotal;
+    qtyTotal+=qty;
     const div=document.createElement('div');
     div.className='cart-item';
     div.innerHTML=`${item.name} x${qty} - KES ${subtotal.toFixed(2)}`;
     cartItems.appendChild(div);
   });
   grandTotal.textContent=`Total: KES ${total.toFixed(2)}`;
+  totalQty.textContent=`Total Quantity: ${qtyTotal}`;
 }
 renderCart();
 
-// Payment selection
-document.getElementById('payMpesa').addEventListener('click', ()=> selectedPayment='mpesa');
-document.getElementById('payCod').addEventListener('click', ()=> selectedPayment='cod');
+// Payment Selection
+let selectedPayment='';
+function highlightPayment(){document.querySelectorAll('.payment-method').forEach(btn=>btn.classList.remove('selected')); if(selectedPayment) document.getElementById(selectedPayment+'Btn').classList.add('selected');}
+document.getElementById('mpesaBtn').addEventListener('click', ()=>{selectedPayment='mpesa'; highlightPayment();});
+document.getElementById('paypalBtn').addEventListener('click', ()=>{selectedPayment='paypal'; highlightPayment();});
+document.getElementById('codBtn').addEventListener('click', ()=>{selectedPayment='cod'; highlightPayment();});
 
-// STK Push
-async function initiateMpesa(phone,total,description,name,email,address){
-  try{
-    const res=await fetch('http://localhost:3000/api/stkpush',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({phone, amount: total, description})
-    });
-    const data = await res.json();
-    if(data.success){
-      alert('📲 Check your phone to enter M-Pesa PIN!');
-      await sendEmail(phone,total,description,name,email,address);
-    } else alert('❌ STK Push failed. Try again.');
-  }catch(err){ console.error(err); alert('❌ Error connecting to payment API'); }
-}
+// Place Order
+document.getElementById('placeOrderBtn').addEventListener('click', async ()=>{
+  if(cart.length===0){alert('Cart is empty!'); return;}
+  if(!selectedPayment){alert('Choose a payment method first!'); return;}
 
-// Send email to admin and user
-async function sendEmail(phone,total,description,name,email,address){
-  try{
-    await fetch('http://localhost:3000/api/sendemail',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({phone,total,description,userName:name,userEmail:email,userAddress:address,cart})
-    });
-    console.log('✅ Emails sent successfully');
-  }catch(err){ console.error('Email error:',err);}
-}
-
-// Place order button
-document.getElementById('placeOrder').addEventListener('click', ()=>{
-  const form = currentSelection==='home'?document.getElementById('homeForm'):document.getElementById('dineForm');
-  const name = form.name.value;
-  const email = form.email.value;
-  const phone = form.phone.value;
-  const address = currentSelection==='home'?form.address.value:'N/A';
+  const deliveryType = flipCardEl.classList.contains('flipped') ? 'dine' : 'home';
+  const form = deliveryType==='home'? document.getElementById('homeForm') : document.getElementById('dineForm');
+  const name = form.name.value, email = form.email.value, phone = form.phone.value;
+  const address = deliveryType==='home'? form.address.value : 'N/A';
   const total = cart.reduce((sum,item)=>sum+(item.price*(item.quantity||1)),0);
-  
-  if(!selectedPayment){ alert('Please select a payment method!'); return; }
-  if(!name || !email || !phone || (currentSelection==='home' && !address)){ alert('Please fill all required fields!'); return; }
-  if(total<=0){ alert('Cart is empty!'); return; }
-  
+
   if(selectedPayment==='mpesa'){
-    const desc = currentSelection==='home'?'Home Delivery':'Dine at Jiweke';
-    initiateMpesa(phone,total,desc,name,email,address);
-  } else if(selectedPayment==='cod'){
-    const desc = currentSelection==='home'?'Home Delivery (COD)':'Dine at Jiweke (COD)';
-    sendEmail(phone,total,desc,name,email,address);
-    alert('✅ Your COD order has been placed successfully!');
+    const pin = prompt(`STK Push: Enter your M-Pesa PIN to pay KES ${total.toFixed(2)}`);
+    if(!pin){alert('Payment cancelled'); return;}
+    alert('✅ Payment sent via M-Pesa!');
   }
+
+  if(selectedPayment==='paypal'){
+    try{
+      const res = await fetch('http://localhost:3000/api/paypal/create-order',{
+        method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({total})
+      });
+      const order = await res.json();
+      if(order.id){
+        const captureRes = await fetch('http://localhost:3000/api/paypal/capture-order',{
+          method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({orderID:order.id})
+        });
+        const captureData = await captureRes.json();
+        if(captureData.status==='COMPLETED'){
+          alert('✅ PayPal payment completed!');
+        } else { alert('❌ PayPal payment failed'); return; }
+      } else { alert('❌ Error creating PayPal order'); return; }
+    } catch(e){ console.error(e); alert('❌ PayPal error'); return; }
+  }
+
+  if(selectedPayment==='cod'){ alert('✅ Cash on Delivery selected!'); }
+
+  // Send Order Email + SMS
+  try{
+    await fetch('http://localhost:3000/api/sendorder',{
+      method:'POST', headers:{'Content-Type':'application/json'}, 
+      body: JSON.stringify({cart, name, email, phone, address, deliveryType, payment:selectedPayment, total})
+    });
+    alert('✅ Order placed successfully! Email & SMS sent.');
+    localStorage.removeItem('cart');
+    window.location.href='index.html';
+  }catch(e){console.error(e); alert('❌ Error sending order');}
 });
 </script>
 </body>
