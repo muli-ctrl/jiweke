@@ -34,7 +34,6 @@
       background-image: url('LIVE LIFE.png'); /* Replace with your image path */
       background-size: cover;
       background-position: center;
-      animation: popUpScale 6s ease-in-out infinite;
     }
 
     @keyframes popUpScale {
@@ -110,7 +109,7 @@
       border-radius: 30px;
       text-transform: uppercase;
       font-size: 1.2rem;
-      animation: glowPulse 1.5s infinite;
+      animation: glowPulse 0.1s infinite;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -181,9 +180,14 @@
     }
 
     h1 {
-      color: #c8102e;
+      color: #ffffff;
       margin-bottom: 20px;
       text-align: center;
+      background-color: #000000;
+      font-size: 2.8rem;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      padding-top: 10px;
+      padding-bottom: 10px;
     }
 
     .cart-item {
@@ -262,31 +266,7 @@
       padding-top: 15px;
     }
 
-    .footer-grid {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 40px;
-      gap: 20px;
-    }
-
-    .footer-grid button {
-      flex: 1;
-      padding: 15px;
-      font-size: 1rem;
-      background: #000;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    .footer-grid button.checkout {
-      background: #c8102e;
-    }
+    
 
     @media (max-width: 600px) {
       .cart-item {
@@ -305,15 +285,14 @@
         gap: 10px;
       }
 
-      .footer-grid {
-        flex-direction: column;
-      }
+      
     }
+    
   </style>
 </head>
 <body>
 
-  <h1>Your Cart</h1>
+  <h1>SHOPPING CART🛒</h1>
   <div id="cart-list"></div>
 
   <div class="totals">
@@ -322,10 +301,36 @@
   </div>
 
   <div class="footer-grid">
-    <button onclick="window.location.href='index.html'">🔙 Back to Shopping</button>
-    <a href="checkout.html" class="checkout-button">checkout 🛒</a>
+  <button onclick="window.location.href='index.html'">🔙 Back to Shopping</button>
+  <button onclick="window.location.href='checkout.html'">Checkout 🛒</button>
+</div>
 
-  </div>
+<style>
+  .footer-grid {
+    display: flex;
+    justify-content: space-between; /* Left & Right */
+    align-items: center;
+    background: #000; /* Black background */
+    padding: 15px;
+  }
+
+  .footer-grid button {
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 12px 40px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  .footer-grid button:hover {
+    background: #444;
+    color: #fff;
+  }
+</style>
+
 
   <script>
     let cart = JSON.parse(localStorage.getItem('cart') || '[]');
@@ -394,6 +399,49 @@
     updateCart();
   </script>
 
+  
+
+  <footer style="background:#222; color:#fff; padding:30px 20px; text-align:center; margin-top:40px;">
+  <div style="max-width:800px; margin:auto;">
+    
+    <!-- Contact -->
+    <p style="margin:8px 0; font-size:16px;">
+      📞 <a href="tel:+254728333985" style="color:#fff; text-decoration:none;">+254 728 333 985</a>
+    </p>
+    <p style="margin:8px 0; font-size:16px;">
+      📧 <a href="mailto:jiweketavern@gmail.com" style="color:#fff; text-decoration:none;">jiweketavern@gmail.com</a>
+    </p>
+    <p style="margin:8px 0; font-size:16px;">
+      💬 <a href="https://wa.me/254728333985" target="_blank" style="color:#25d366; text-decoration:none;">Chat on WhatsApp</a>
+    </p>
+
+    <!-- Social Icons -->
+    <div style="margin:20px 0;">
+      <a href="https://www.facebook.com/JiwekeTavernNairobi" target="_blank" style="margin:0 10px; color:#3b5998; font-size:28px;">
+        <i class="fab fa-facebook"></i>
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" width="28" style="vertical-align:middle;">
+      </a>
+      <a href="https://www.instagram.com/jiweketavern/" target="_blank" style="margin:0 10px; color:#e4405f; font-size:28px;">
+        <i class="fab fa-instagram"></i>
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" width="28" style="vertical-align:middle;">
+      </a>
+      <a href="https://wa.me/254728333985" target="_blank" style="margin:0 10px; color:#25d366; font-size:28px;">
+        <i class="fab fa-whatsapp"></i>
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" width="28" style="vertical-align:middle;">
+      </a>
+    </div>
+
+    <!-- Copyright -->
+    <p style="margin-top:15px; font-size:16px; color:#f0f0f0; font-family: kite system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+      © 2025 Jiweke Tavern. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+<!-- Font Awesome for icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+
 </body>
 </html>
-
