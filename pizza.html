@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jiweke Tavern Menu</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #fff8e6;
+      color: #222;
+      overflow-x: hidden;
+    }
+
+    /* Banner */
+    .banner {
+      width: 100%;
+      height: 220px;
+      background-image: url('LIVE LIFE.png'); /* Replace with your image */
+      background-size: cover;
+      background-position: center;
+      border-bottom: 3px solid #000;
+    }
+
+    /* Horizontal Nav Bar */
+    .nav-bar {
+      display: flex;
+      overflow-x: auto;
+      background: #fff;
+      padding: 14px 10px;
+      border-top: 3px solid #000;
+      border-bottom: 3px solid #000;
+      gap: 12px;
+      scroll-snap-type: x mandatory;
+      position: sticky; /* keep visible while scrolling */
+      top: 0;
+      z-index: 100;
+    }
+
+    /* Smooth scrollbar */
+    .nav-bar::-webkit-scrollbar {
+      height: 8px;
+    }
+    .nav-bar::-webkit-scrollbar-thumb {
+      background: #ffbf00;
+      border-radius: 20px;
+    }
+
+    .nav-btn {
+      flex: 0 0 auto;
+      scroll-snap-align: start;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 12px 20px;
+      border-radius: 12px;
+      border: 2px solid #ffbf00;
+      background: #fffaf0;
+      color: #333;
+      transition: all 0.3s ease;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .nav-btn:hover {
+      background: #ffdb4d;
+      color: #000;
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .nav-btn.active {
+      background: #f7c600;
+      color: #000;
+      font-weight: 700;
+      border: 2px solid #000;
+      transform: scale(1.08);
+    }
+
+    /* Offer button special pulse */
+    .offer-btn {
+      background: linear-gradient(45deg, #ff0000, #b30000);
+      color: #fff !important;
+      font-weight: 900;
+      border-radius: 25px;
+      padding: 12px 24px;
+      text-transform: uppercase;
+      font-size: 1rem;
+      animation: glowPulse 1.8s infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      box-shadow: 0 4px 12px rgba(255,0,0,0.5);
+    }
+
+    @keyframes glowPulse {
+      0% { box-shadow: 0 0 8px #ff0000; }
+      50% { box-shadow: 0 0 24px #ff0000; transform: scale(1.07); }
+      100% { box-shadow: 0 0 8px #ff0000; }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .banner {
+        height: 160px;
+      }
+      .nav-btn {
+        font-size: 0.85rem;
+        padding: 10px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Banner -->
+  <div class="banner"></div>
+
+  <!-- Horizontal Navigation -->
+  <nav class="nav-bar" id="navbar">
+    <a href="index.html" class="nav-btn offer-btn"><i class="fas fa-tags"></i> OFFER 🔥</a>
+    <a href="mutton chicken.html" class="nav-btn">MUTTON/CHICKEN</a>
+    <a href="Fish.html" class="nav-btn">FISH</a>
+    <a href="platter.html" class="nav-btn">PLATTERS</a>
+    <a href="side orders.html" class="nav-btn">SIDE ORDERS</a>
+    <a href="snacks.html" class="nav-btn">SNACKS</a>
+    <a href="kids.html" class="nav-btn">KIDS</a>
+    <a href="pizza hawaiian.jpg" class="nav-btn">PIZZA (NEW)</a>
+    <a href="hot beverages.html" class="nav-btn">HOT BEVERAGES</a>
+    <a href="chef special.html" class="nav-btn">CHEF'S SPECIAL</a>
+  </nav>
+
+  <script>
+    // Highlight active nav link
+    const currentURL = window.location.href.toLowerCase();
+    document.querySelectorAll('.nav-btn').forEach(link => {
+      const href = link.getAttribute('href').toLowerCase();
+      if (currentURL.includes(href)) {
+        link.classList.add('active');
+      }
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fafafa;
+      color: #222;
+    }
+
+    /* Cart Section */
+    .cart-section {
+      max-width: 1000px;
+      margin: 20px auto 0 auto;
+      padding: 12px;
+      background: #fff;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: all 0.4s ease;
+      position: relative;
+    }
+
+    /* Floating cart when scrolling */
+    .cart-section.floating {
+      position: fixed;
+      top: 50%;
+      right: 15px;
+      transform: translateY(-50%);
+      width: auto;
+      margin: 0;
+      border-radius: 12px;
+      z-index: 1000;
+    }
+
+    .cart-icon {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .cart-icon img {
+      width: 40px;
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -6px;
+      right: -10px;
+      background: #e53935;
+      color: #fff;
+      border-radius: 50%;
+      padding: 3px 7px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    /* Menu Grid */
+    .menu-container {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    @media (max-width: 768px) {
+      .menu-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .menu-item {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+
+    .menu-image {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .menu-content {
+      padding: 14px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .menu-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 6px;
+      color: #333;
+    }
+
+    .menu-desc {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .size-toggle {
+      display: flex;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .size-option {
+      flex: 1;
+      padding: 6px;
+      text-align: center;
+      cursor: pointer;
+      background: #eee;
+      transition: background 0.3s;
+      font-size: 0.9rem;
+    }
+
+    .size-option.active {
+      background: #43a047;
+      color: white;
+      font-weight: bold;
+    }
+
+    .menu-price {
+      font-weight: bold;
+      color: #e65100;
+      font-size: 1rem;
+      margin: 10px 0;
+    }
+
+    .order-button {
+      margin-top: auto;
+      padding: 10px;
+      background: #43a047;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.25s ease;
+    }
+
+    .order-button:hover {
+      background: #2e7d32;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cart Section -->
+  <section class="cart-section" id="cart-section">
+    <div class="cart-icon" onclick="window.location.href='cart.html'">
+      <img src="https://cdn-icons-png.flaticon.com/512/107/107831.png" alt="Cart" />
+      <span class="cart-count" id="cart-count">0</span>
+    </div>
+  </section>
+
+  <!-- Menu -->
+  <div class="menu-container" id="menu-list"></div>
+
+  <script>
+    const menuItems = [
+      { id: 101, name: "Chicken Pizza", desc: "Topped with meat, peppers, onions and cheese", prices: { small: 550, large: 1100 }, img: "chicken pizza.jpg" },
+      { id: 102, name: "Mutton Pizza", desc: "Loaded with mushrooms, spinach and olives", prices: { small: 550, large: 1100 }, img: "pizza magarita.jpg" },
+      { id: 103, name: "Hawaiian Pizza", desc: "BBQ chicken, red onions and cilantro", prices: { small: 500, large: 1000 }, img: "pizza hawaiian.jpg" },
+      { id: 104, name: "Magarita Pizza", desc: "Classic pepperoni with cheese overload", prices: { small: 400, large: 800 }, img: "pizza magarita.jpg" },
+      { id: 105, name: "Veggie Pizza", desc: "Tomatoes, onions, peppers, and olives", prices: { small: 450, large: 900 }, img: "veggie pizza.jpg" },
+      { id: 106, name: "BBQ Beef Pizza", desc: "Tender beef strips with BBQ sauce", prices: { small: 600, large: 1200 }, img: "bbq beef pizza.jpg" }
+    ];
+
+    const menuList = document.getElementById('menu-list');
+    const cartCount = document.getElementById('cart-count');
+    const cartSection = document.getElementById('cart-section');
+
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      cartCount.textContent = cart.length;
+    }
+
+    function addToCart(itemId) {
+      const size = document.querySelector(`.size-option.active[data-id='${itemId}']`).dataset.size;
+      const item = menuItems.find(i => i.id === itemId);
+      const price = item.prices[size];
+
+      const cartItem = {
+        id: item.id,
+        name: `${item.name} (${size})`,
+        price: price,
+        size: size,
+        img: item.img
+      };
+
+      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      cart.push(cartItem);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartCount();
+      alert(`${cartItem.name} added to cart`);
+    }
+
+    function renderMenu() {
+      menuList.innerHTML = '';
+      menuItems.forEach((item) => {
+        const div = document.createElement('div');
+        div.className = 'menu-item';
+
+        div.innerHTML = `
+          <img src="${item.img}" class="menu-image" alt="${item.name}" />
+          <div class="menu-content">
+            <div class="menu-title">${item.name}</div>
+            <div class="menu-desc">${item.desc}</div>
+            <div class="size-toggle" id="toggle-${item.id}">
+              <div class="size-option active" data-id="${item.id}" data-size="small" onclick="selectSize(${item.id}, 'small')">Small</div>
+              <div class="size-option" data-id="${item.id}" data-size="large" onclick="selectSize(${item.id}, 'large')">Large</div>
+            </div>
+            <div class="menu-price" id="price-${item.id}">KSH ${item.prices.small}</div>
+            <button class="order-button" onclick='addToCart(${item.id})'>Order</button>
+          </div>
+        `;
+        menuList.appendChild(div);
+      });
+    }
+
+    function selectSize(itemId, selectedSize) {
+      const sizeOptions = document.querySelectorAll(`.size-option[data-id='${itemId}']`);
+      sizeOptions.forEach(option => {
+        option.classList.remove('active');
+        if (option.dataset.size === selectedSize) {
+          option.classList.add('active');
+        }
+      });
+
+      const item = menuItems.find(i => i.id === itemId);
+      const priceElement = document.getElementById(`price-${itemId}`);
+      priceElement.textContent = `KSH ${item.prices[selectedSize]}`;
+    }
+
+    renderMenu();
+    updateCartCount();
+
+    // Floating cart on scroll
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 150) {
+        cartSection.classList.add('floating');
+      } else {
+        cartSection.classList.remove('floating');
+      }
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Include Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+  footer {
+    background: #1c1c1c;
+    color: #fff;
+    padding: 40px 20px;
+    margin-top: 50px;
+  }
+
+  .footer-container {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    text-align: center;
+  }
+
+  /* Contact */
+  .footer-contact p {
+    margin: 6px 0;
+    font-size: 16px;
+  }
+  .footer-contact a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  .footer-contact a:hover {
+    color: #c8102e;
+  }
+
+  /* Social */
+  .footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  .footer-social a {
+    font-size: 30px;
+    transition: transform 0.3s ease;
+  }
+  .footer-social a:hover {
+    transform: scale(1.2);
+  }
+
+  /* Social colors */
+  .fa-facebook { color: #3b5998; }
+  .fa-instagram { color: #e4405f; }
+  .fa-whatsapp { color: #25d366; }
+
+  /* Copyright */
+  .footer-bottom {
+    font-size: 14px;
+    color: #bbb;
+    text-align: center;
+
+  }
+
+  /* Responsive Adjustments */
+  @media (min-width: 768px) {
+    .footer-container {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+      align-items: flex-start;
+    }
+    .footer-contact {
+      text-align: left;
+    }
+    .footer-social {
+      justify-content: flex-end;
+    }
+  }
+</style>
+
+<footer>
+  <div class="footer-container">
+
+    <!-- Contact -->
+    <div class="footer-contact">
+      <p>📞 <a href="tel:+254728333985">+254 728 333 985</a></p>
+      <p>📧 <a href="mailto:jiweketavern@gmail.com">jiweketavern@gmail.com</a></p>
+      <p>💬 <a href="https://wa.me/254728333985" target="_blank" style="color:#25d366;">Chat on WhatsApp</a></p>
+    </div>
+
+    <!-- Social Icons -->
+    <div class="footer-social">
+      <a href="https://www.facebook.com/JiwekeTavernNairobi" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/jiweketavern/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/254728333985" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
+  </div>
+
+  <!-- Copyright -->
+  <p class="footer-bottom">© 2025 Jiweke Tavern. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
