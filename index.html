@@ -20,195 +20,341 @@
     }
 
     body {
-      background: #ffbf00;
+      background: #fff8e6;
       color: #222;
+      overflow-x: hidden;
     }
 
     /* Banner */
     .banner {
       width: 100%;
-      height: 280px;
+      height: 220px;
       background-image: url('LIVE LIFE.png'); /* Replace with your image */
       background-size: cover;
       background-position: center;
-      animation: popUpScale 6s ease-in-out infinite;
+      border-bottom: 3px solid #000;
     }
 
-    @keyframes popUpScale {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
-
-    /* Header with nav + cart */
-    header {
-      background: #fff;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-
+    /* Horizontal Nav Bar */
     .nav-bar {
       display: flex;
       overflow-x: auto;
-      gap: 14px;
-      padding: 12px 16px;
+      background: #fff;
+      padding: 14px 10px;
       border-top: 3px solid #000;
       border-bottom: 3px solid #000;
+      gap: 12px;
       scroll-snap-type: x mandatory;
+      position: sticky; /* keep visible while scrolling */
+      top: 0;
+      z-index: 100;
     }
 
+    /* Smooth scrollbar */
     .nav-bar::-webkit-scrollbar {
-      height: 6px;
+      height: 8px;
     }
     .nav-bar::-webkit-scrollbar-thumb {
-      background: #999;
-      border-radius: 10px;
+      background: #ffbf00;
+      border-radius: 20px;
     }
 
     .nav-btn {
       flex: 0 0 auto;
+      scroll-snap-align: start;
       text-decoration: none;
       font-weight: bold;
-      padding: 10px 18px;
-      border-radius: 20px;
-      border: 2px solid #ddd;
-      background: linear-gradient(145deg, #f9f9f9, #eaeaea);
-      color: #000;
+      padding: 12px 20px;
+      border-radius: 12px;
+      border: 2px solid #ffbf00;
+      background: #fffaf0;
+      color: #333;
       transition: all 0.3s ease;
-      box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-      scroll-snap-align: start;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
     .nav-btn:hover {
-      background: #ffe259;
-      border-color: #bbb;
-      transform: translateY(-2px);
+      background: #ffdb4d;
+      color: #000;
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     }
 
     .nav-btn.active {
-      background: #f0c60d;
-      border-color: #222;
+      background: #f7c600;
       color: #000;
-      font-weight: 900;
+      font-weight: 700;
+      border: 2px solid #000;
+      transform: scale(1.08);
     }
 
-    /* Offer Button */
+    /* Offer button special pulse */
     .offer-btn {
       background: linear-gradient(45deg, #ff0000, #b30000);
       color: #fff !important;
       font-weight: 900;
-      border: 2px solid #fff;
+      border-radius: 25px;
       padding: 12px 24px;
-      border-radius: 30px;
       text-transform: uppercase;
-      font-size: 1.1rem;
+      font-size: 1rem;
+      animation: glowPulse 1.8s infinite;
       display: flex;
       align-items: center;
-      gap: 8px;
-      animation: pulsePop 1.3s infinite, glowPulse 2s infinite;
-      position: relative;
-    }
-
-    @keyframes pulsePop {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
+      justify-content: center;
+      gap: 6px;
+      box-shadow: 0 4px 12px rgba(255,0,0,0.5);
     }
 
     @keyframes glowPulse {
       0% { box-shadow: 0 0 8px #ff0000; }
-      50% { box-shadow: 0 0 22px #ff0000; }
+      50% { box-shadow: 0 0 24px #ff0000; transform: scale(1.07); }
       100% { box-shadow: 0 0 8px #ff0000; }
-    }
-
-    /* Cart Row (below nav) */
-    .cart-row {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      padding: 10px 20px;
-      background: #fff;
-      border-bottom: 2px solid #000;
-    }
-
-    .cart-icon {
-      position: relative;
-      cursor: pointer;
-
-    }
-
-    .cart-icon img {
-      width: 36px;
-      height: 36px;
-    }
-
-    .cart-count {
-      position: absolute;
-      top: -8px;
-      right: -8px;
-      background: red;
-      color: #fff;
-      font-size: 12px;
-      font-weight: bold;
-      border-radius: 50%;
-      padding: 4px 7px;
     }
 
     /* Responsive */
     @media (max-width: 768px) {
+      .banner {
+        height: 160px;
+      }
       .nav-btn {
-        font-size: 0.9rem;
-        padding: 8px 14px;
-      }
-      .offer-btn {
-        font-size: 0.95rem;
-        padding: 10px 18px;
-      }
-      .cart-row {
-        justify-content: center;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .nav-bar {
-        gap: 10px;
-      }
-      .offer-btn {
         font-size: 0.85rem;
+        padding: 10px 16px;
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- Banner -->
   <div class="banner"></div>
 
-  <header>
-    <!-- Navigation -->
-    <nav class="nav-bar" id="navbar">
-      <a href="index.html" class="nav-btn offer-btn"> <i class="fas fa-tags"></i> OFFER🔥 </a>
-      <a href="mutton chicken.html" class="nav-btn">MUTTON/CHICKEN</a>
-      <a href="Fish.html" class="nav-btn">FISH</a>
-      <a href="platter.html" class="nav-btn">PLATTERS</a>
-      <a href="side orders.html" class="nav-btn">SIDE ORDERS</a>
-      <a href="snacks.html" class="nav-btn">SNACKS</a>
-      <a href="kids.html" class="nav-btn">KIDS</a>
-      <a href="pizza hawaiian.jpg" class="nav-btn">PIZZA (NEW)</a>
-      <a href="hot beverages.html" class="nav-btn">HOT BEVERAGES</a>
-      <a href="chef special.html" class="nav-btn">CHEF'S SPECIAL</a>
-    </nav>
+  <!-- Horizontal Navigation -->
+  <nav class="nav-bar" id="navbar">
+    <a href="index.html" class="nav-btn offer-btn"><i class="fas fa-tags"></i> OFFER 🔥</a>
+    <a href="mutton chicken.html" class="nav-btn">MUTTON/CHICKEN</a>
+    <a href="Fish.html" class="nav-btn">FISH</a>
+    <a href="platter.html" class="nav-btn">PLATTERS</a>
+    <a href="side orders.html" class="nav-btn">SIDE ORDERS</a>
+    <a href="snacks.html" class="nav-btn">SNACKS</a>
+    <a href="kids.html" class="nav-btn">KIDS</a>
+    <a href="pizza hawaiian.jpg" class="nav-btn">PIZZA (NEW)</a>
+    <a href="hot beverages.html" class="nav-btn">HOT BEVERAGES</a>
+    <a href="chef special.html" class="nav-btn">CHEF'S SPECIAL</a>
+  </nav>
 
-    <!-- Cart below nav -->
-    <div class="cart-row">
-      <div class="cart-icon" onclick="window.location.href='cart.html'">
-        <img src="https://cdn-icons-png.flaticon.com/512/107/107831.png" alt="Cart" />
-        <span class="cart-count" id="cart-count">0</span>
-      </div>
+  <script>
+    // Highlight active nav link
+    const currentURL = window.location.href.toLowerCase();
+    document.querySelectorAll('.nav-btn').forEach(link => {
+      const href = link.getAttribute('href').toLowerCase();
+      if (currentURL.includes(href)) {
+        link.classList.add('active');
+      }
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+
+<style>
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    background: #f5f5f5;
+    color: #222;
+  }
+
+  /* Cart Section (Above Menu Items, default position) */
+  .cart-section {
+    max-width: 1000px;
+    margin: 20px auto 0 auto;
+    padding: 15px;
+    background: #fff;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: all 0.4s ease;
+    position: relative; /* default, inline with content */
+  }
+
+  /* Floating cart when scrolled */
+  .cart-section.floating {
+    position: fixed;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    width: auto;
+    margin: 0;
+    border-radius: 12px;
+    z-index: 1000;
+  }
+
+  .cart-icon {
+    position: relative;
+    cursor: pointer;
+  }
+
+  .cart-icon img {
+    width: 40px;
+  }
+
+  .cart-count {
+    position: absolute;
+    top: -6px;
+    right: -10px;
+    background: red;
+    color: #fff;
+    border-radius: 50%;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  /* Menu Grid */
+  .menu-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .menu-item {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    position: relative;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .menu-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+
+  .menu-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* OFFER Badge with Pop Effect */
+  .offer-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #ff3d3d;
+    color: #fff;
+    font-size: 0.8rem;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    animation: pop 1.5s infinite ease-in-out;
+  }
+
+  @keyframes pop {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+  }
+
+  .menu-content {
+    padding: 14px;
+    text-align: center;
+  }
+
+  .menu-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 6px;
+  }
+
+  .menu-price {
+    font-weight: bold;
+    color: #111;
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+
+  .order-button {
+    background: #ff9d00;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .order-button:hover {
+    background: #c75c00;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .menu-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .menu-image {
+      height: 140px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .menu-container {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .menu-image {
+      height: 120px;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <!-- Cart Section -->
+  <section class="cart-section" id="cart-section">
+    <div class="cart-icon" onclick="window.location.href='cart.html'">
+      <img src="https://cdn-icons-png.flaticon.com/512/107/107831.png" alt="Cart" />
+      <span class="cart-count" id="cart-count">0</span>
     </div>
-  </header>
+  </section>
 
-<script>
-   const cartCount = document.getElementById('cart-count');
+  <!-- Menu -->
+  <div class="menu-container" id="menu-list"></div>
+
+  <script>
+    const menuItems = [
+      { id: 1, name: "1 Kg Goat", price: 1200, img: "goat1.jpg" },
+      { id: 2, name: "1/2KG Goat", price: 750, img: "goat 2.jpg" },
+      { id: 3, name: "Goat Meat", price: 700, img: "Nyama choma 2.jpg" },
+      { id: 4, name: "Full Goat", price: 13000, img: "Nyama choma 3.jpg" },
+      { id: 5, name: "Half Goat", price: 7000, img: "Nyama choma 4.jpg" },
+      { id: 6, name: "Kichwa & Matumbo", price: 500, img: "Nyama choma 1.jpg" },
+      { id: 7, name: "Full Chicken Kienyeji", price: 2000, img: "Full kienyeji.jpg" },
+      { id: 8, name: "1KG Pork", price: 1500, img: "pork 1.jpg" }
+    ];
+
+    const menuList = document.getElementById('menu-list');
+    const cartCount = document.getElementById('cart-count');
+    const cartSection = document.getElementById('cart-section');
 
     function updateCartCount() {
       const cart = JSON.parse(localStorage.getItem('cart') || '[]');
@@ -220,158 +366,7 @@
       cart.push(item);
       localStorage.setItem('cart', JSON.stringify(cart));
       updateCartCount();
-      alert(`${item.name} added to cart`);
     }
-
-    // Highlight active link
-    const currentURL = window.location.href.toLowerCase();
-    document.querySelectorAll('.nav-btn').forEach(link => {
-      const href = link.getAttribute('href').toLowerCase();
-      if (currentURL.includes(href)) {
-        link.classList.add('active');
-      }
-    });
-
-    updateCartCount();
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <style>
-    
-
-    /* Menu Grid */
-    .menu-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-      padding: 25px;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    /* Card Style */
-    .menu-item {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .menu-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.15);
-    }
-
-    .menu-image {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-
-    .menu-content {
-      padding: 15px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .menu-title {
-      font-size: 1.05rem;
-      color: #111;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    .menu-price {
-      font-weight: bold;
-      color: #f57c00;
-      font-size: 1rem;
-      margin-bottom: 15px;
-    }
-
-    .order-button {
-      background: #f57c00;
-      color: white;
-      border: none;
-      padding: 10px;
-      width: 100%;
-      font-weight: bold;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: all 0.25s ease;
-    }
-
-    .order-button:hover {
-      background: #d84315;
-      transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    }
-
-    .order-button:active {
-      transform: scale(0.95);
-    }
-
-    /* Responsive tweaks */
-    @media (max-width: 768px) {
-      .menu-container {
-        gap: 12px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .menu-container {
-        grid-template-columns: 1fr;
-      }
-      .menu-title {
-        font-size: 1rem;
-      }
-    }
-  </style>
-
-<body>
-
-  <div class="menu-container" id="menu-list"></div>
-
-  <script>
-    const menuItems = [
-      { id: 1, name: "1 Kg Goat", price: 1200, img: "goat1.jpg" },
-      { id: 2, name: "1/2KG Goat", price: 750, img: "goat 2.jpg" },
-      { id: 3, name: "Goat Meat", price: 700, img: "Nyama choma 2.jpg" },
-      { id: 4, name: "Full Goat", price: 13000, img: "Nyama choma 3.jpg" },
-      { id: 5, name: "Half Goat", price: 7000, img: "Nyama choma 4.jpg" },
-      { id: 6, name: "Kichwa & Matumbo", price: 500, img: "Nyama choma 1.jpg" },
-      { id: 7, name: "1/4 Chicken Broiler", price: 700, img: "broiler 3.jpg" },
-      { id: 8, name: "1/2 Chicken Broiler", price: 800, img: "12 broiler.jpg" },
-      { id: 9, name: "Full Chicken Broiler", price: 1500, img: "broiler full.jpg" },
-      { id: 10, name: "1/2 Chicken Kienyeji", price: 1100, img: "half kienyeji.jpg" },
-      { id: 11, name: "Full Chicken Kienyeji", price: 2000, img: "Full kienyeji.jpg" },
-      { id: 12, name: "1KG Pork", price: 1500, img: "pork 1.jpg" },
-      { id: 13, name: "1/2KG Pork", price: 900, img: "pork 2.jpg" },
-      { id: 14, name: "Pork Meal", price: 750, img: "porkm.jpg" },
-      { id: 15, name: "1/4KG Pork", price: 700, img: "pork3.jpg" }
-    ];
-
-    const menuList = document.getElementById('menu-list');
 
     function renderMenu() {
       menuList.innerHTML = '';
@@ -379,11 +374,12 @@
         const div = document.createElement('div');
         div.className = 'menu-item';
         div.innerHTML = `
+          <div class="offer-badge">OFFER</div>
           <img src="${item.img}" class="menu-image" alt="${item.name}" />
           <div class="menu-content">
             <div class="menu-title">${item.name}</div>
             <div class="menu-price">KSH ${item.price.toFixed(2)}</div>
-            <button class="order-button">Order</button>
+            <button class="order-button" onclick='addToCart(${JSON.stringify(item)})'>Order</button>
           </div>
         `;
         menuList.appendChild(div);
@@ -391,6 +387,16 @@
     }
 
     renderMenu();
+    updateCartCount();
+
+    // Floating behavior on scroll
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 150) {
+        cartSection.classList.add('floating');
+      } else {
+        cartSection.classList.remove('floating');
+      }
+    });
   </script>
 
 
@@ -399,106 +405,69 @@
 
 
 
-<!-- Include Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<style>
-  footer {
-    background: #1c1c1c;
-    color: #fff;
-    padding: 40px 20px;
-    margin-top: 50px;
-  }
 
-  .footer-container {
-    max-width: 1100px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
-    text-align: center;
-  }
 
-  /* Contact */
-  .footer-contact p {
-    margin: 6px 0;
-    font-size: 16px;
-  }
-  .footer-contact a {
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  .footer-contact a:hover {
-    color: #c8102e;
-  }
 
-  /* Social */
-  .footer-social {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-  }
-  .footer-social a {
-    font-size: 30px;
-    transition: transform 0.3s ease;
-  }
-  .footer-social a:hover {
-    transform: scale(1.2);
-  }
 
-  /* Social colors */
-  .fa-facebook { color: #3b5998; }
-  .fa-instagram { color: #e4405f; }
-  .fa-whatsapp { color: #25d366; }
 
-  /* Copyright */
-  .footer-bottom {
-    font-size: 14px;
-    color: #bbb;
-    text-align: center;
 
-  }
 
-  /* Responsive Adjustments */
-  @media (min-width: 768px) {
-    .footer-container {
-      flex-direction: row;
-      justify-content: space-between;
-      text-align: left;
-      align-items: flex-start;
-    }
-    .footer-contact {
-      text-align: left;
-    }
-    .footer-social {
-      justify-content: flex-end;
-    }
-  }
-</style>
 
-<footer>
-  <div class="footer-container">
 
+
+
+
+  <footer style="background:#222; color:#fff; padding:30px 20px; text-align:center; margin-top:40px;">
+  <div style="max-width:800px; margin:auto;">
+    
     <!-- Contact -->
-    <div class="footer-contact">
-      <p>📞 <a href="tel:+254728333985">+254 728 333 985</a></p>
-      <p>📧 <a href="mailto:jiweketavern@gmail.com">jiweketavern@gmail.com</a></p>
-      <p>💬 <a href="https://wa.me/254728333985" target="_blank" style="color:#25d366;">Chat on WhatsApp</a></p>
-    </div>
+    <p style="margin:8px 0; font-size:16px;">
+      📞 <a href="tel:+254728333985" style="color:#fff; text-decoration:none;">+254 728 333 985</a>
+    </p>
+    <p style="margin:8px 0; font-size:16px;">
+      📧 <a href="mailto:jiweketavern@gmail.com" style="color:#fff; text-decoration:none;">jiweketavern@gmail.com</a>
+    </p>
+    <p style="margin:8px 0; font-size:16px;">
+      💬 <a href="https://wa.me/254728333985" target="_blank" style="color:#25d366; text-decoration:none;">Chat on WhatsApp</a>
+    </p>
 
     <!-- Social Icons -->
-    <div class="footer-social">
-      <a href="https://www.facebook.com/JiwekeTavernNairobi" target="_blank"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.instagram.com/jiweketavern/" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://wa.me/254728333985" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <div style="margin:20px 0;">
+      <a href="https://www.facebook.com/JiwekeTavernNairobi" target="_blank" style="margin:0 10px; color:#3b5998; font-size:28px;">
+        <i class="fab fa-facebook"></i>
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" width="28" style="vertical-align:middle;">
+      </a>
+      <a href="https://www.instagram.com/jiweketavern/" target="_blank" style="margin:0 10px; color:#e4405f; font-size:28px;">
+        <i class="fab fa-instagram"></i>
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" width="28" style="vertical-align:middle;">
+      </a>
+      <a href="https://wa.me/254728333985" target="_blank" style="margin:0 10px; color:#25d366; font-size:28px;">
+        <i class="fab fa-whatsapp"></i>
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" width="28" style="vertical-align:middle;">
+      </a>
     </div>
-  </div>
 
-  <!-- Copyright -->
-  <p class="footer-bottom">© 2025 Jiweke Tavern. All rights reserved.</p>
+    <!-- Copyright -->
+    <p style="margin-top:15px; font-size:16px; color:#f0f0f0; font-family: kite system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+      © 2025 Jiweke Tavern. All rights reserved.
+    </p>
+  </div>
 </footer>
+
+<!-- Font Awesome for icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+
+  
+  
 </body>
 </html>
+
+
+
+
+
+
+
